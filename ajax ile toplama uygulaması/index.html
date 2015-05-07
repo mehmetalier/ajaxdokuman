@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajaxla Hesaplama</title>
+	<link rel="stylesheet" type="text/css" href="hesap.css">
+     <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+      <script type="text/javascript">
+function ajax() {
+$.ajax({
+	type: "POST",
+	url: "ajax.php",
+	data: $('form#hesapform').serialize(),
+	success: function(ajaxcevap){
+		$('#sonuc').html(ajaxcevap + '<br />').slideDown('slow');
+ }
+ });
+}
+</script>
+
+</head>
+<body>
+ <form id="hesapform" name="hesapform">
+    
+   <div id="block">
+    <label for="s1">Sayı 1</label>
+	<input id="s1" name="s1"><br />
+
+	<label for="s2">Sayı 2</label>
+	<input id="s2" name="s2"><br />
+
+	<label for="topla"></label>
+	<input id="topla" name="topla" value="Sayıları Topla" type="button" onclick="javascript:ajax();">
+	<div id="sonuc"></div>
+	</div>
+</form>
+
+</body>
+</html>
